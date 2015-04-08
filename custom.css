@@ -1,0 +1,30 @@
+#tasks_section {
+    margin-top: 100px;
+}
+
+#tasks_section_header {
+    margin-bottom: 50px;
+}
+
+#tasks_form {
+    margin-left: 100px;
+}
+
+#tasks_controls {
+    margin-left: 50px;
+}
+
+#tasks_button {
+    margin-top: 20px;
+}
+
+#tasks_maid_header{
+    margin-top: 20px;
+    margin-bottom: 20px;
+}
+
+#search_box {
+    max-width: 100%;
+    margin: 30px auto;
+}
+

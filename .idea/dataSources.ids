@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<component name="dataSourceStorage">
+  <data-source name="MySQL - maidintown@localhost" uuid="eba003de-066c-4327-98c2-bbc4b6d8a987">
+    <database-info product="MySQL" version="5.6.21" jdbc-version="4.0" driver-name="MySQL Connector Java" driver-version="mysql-connector-java-5.1.34 ( Revision: jess.balint@oracle.com-20141014163213-wqbwpf1ok2kvo1om )">
+      <extra-name-characters>#@</extra-name-characters>
+      <identifier-quote-string>`</identifier-quote-string>
+    </database-info>
+    <case-sensitivity plain-identifiers="lower" quoted-identifiers="lower"/>
+    <schema name="" catalog="maidintown"/>
+    <table name="maid_task" schema="" catalog="maidintown" type="TABLE">
+      <column name="id" sqlType="INT" precision="10" scale="0" nullable="false" jdbcType="4" autoIncrement="true"/>
+      <column name="maid_id" sqlType="INT" precision="10" scale="0" nullable="false" jdbcType="4"/>
+      <column name="task_id" sqlType="INT" precision="10" scale="0" nullable="false" jdbcType="4"/>
+      <primary-key name="PRIMARY" columns="id"/>
+      <foreign-key name="maid_task_ibfk_1" columns="maid_id" ref-table="maids" ref-schema="" ref-catalog="maidintown" ref-columns="id" update-rule="0" delete-rule="0" deferrability="2"/>
+      <foreign-key name="maid_task_ibfk_2" columns="task_id" ref-table="tasks" ref-schema="" ref-catalog="maidintown" ref-columns="id" update-rule="0" delete-rule="0" deferrability="2"/>
+    </table>
+    <table name="maids" schema="" catalog="maidintown" type="TABLE">
+      <column name="id" sqlType="INT" precision="10" scale="0" nullable="false" jdbcType="4" autoIncrement="true"/>
+      <column name="name" sqlType="VARCHAR" precision="50" scale="0" nullable="false" jdbcType="12"/>
+      <column name="gender" sqlType="VARCHAR" precision="10" scale="0" nullable="false" jdbcType="12"/>
+      <column name="contract" sqlType="VARCHAR" precision="10" scale="0" nullable="false" jdbcType="12"/>
+      <primary-key name="PRIMARY" columns="id"/>
+      <exported-key name="maid_task_ibfk_1" table="maid_task" schema="" catalog="maidintown" columns="maid_id"/>
+      <exported-key name="user_maid_ibfk_2" table="user_maid" schema="" catalog="maidintown" columns="maid_id"/>
+    </table>
+    <table name="task_price" schema="" catalog="maidintown" type="TABLE">
+      <column name="id" sqlType="INT" precision="10" scale="0" nullable="false" jdbcType="4" autoIncrement="true"/>
+      <column name="dishes" sqlType="INT" precision="10" scale="0" nullable="false" jdbcType="4"/>
+      <column name="clothes" sqlType="INT" precision="10" scale="0" nullable="false" jdbcType="4"/>
+      <column name="cooking" sqlType="INT" precision="10" scale="0" nullable="false" jdbcType="4"/>
+      <column name="maintenance" sqlType="INT" precision="10" scale="0" nullable="false" jdbcType="4"/>
+      <column name="beatification" sqlType="INT" precision="10" scale="0" nullable="false" jdbcType="4"/>
+      <primary-key name="PRIMARY" columns="id"/>
+    </table>
+    <table name="tasks" schema="" catalog="maidintown" type="TABLE">
+      <column name="id" sqlType="INT" precision="10" scale="0" nullable="false" jdbcType="4" autoIncrement="true"/>
+      <column name="user_id" sqlType="INT" precision="10" scale="0" nullable="false" jdbcType="4"/>
+      <column name="dishes" sqlType="TINYINT" precision="3" scale="0" nullable="false" jdbcType="-6"/>
+      <column name="clothes" sqlType="TINYINT" precision="3" scale="0" nullable="false" jdbcType="-6"/>
+      <column name="cooking" sqlType="TINYINT" precision="3" scale="0" nullable="false" jdbcType="-6"/>
+      <column name="maintenance" sqlType="TINYINT" precision="3" scale="0" nullable="false" jdbcType="-6"/>
+      <column name="beautification" sqlType="TINYINT" precision="3" scale="0" nullable="false" jdbcType="-6"/>
+      <primary-key name="PRIMARY" columns="id"/>
+      <exported-key name="maid_task_ibfk_2" table="maid_task" schema="" catalog="maidintown" columns="task_id"/>
+      <index name="user_id" unique="false" columns="user_id"/>
+    </table>
+    <table name="user_maid" schema="" catalog="maidintown" type="TABLE">
+      <column name="id" sqlType="INT" precision="10" scale="0" nullable="false" jdbcType="4" autoIncrement="true"/>
+      <column name="user_id" sqlType="INT" precision="10" scale="0" nullable="false" jdbcType="4"/>
+      <column name="maid_id" sqlType="INT" precision="10" scale="0" nullable="false" jdbcType="4"/>
+      <column name="total_price" sqlType="INT" precision="10" scale="0" nullable="false" jdbcType="4"/>
+      <primary-key name="PRIMARY" columns="id"/>
+      <foreign-key name="user_maid_ibfk_1" columns="user_id" ref-table="users" ref-schema="" ref-catalog="maidintown" ref-columns="id" update-rule="0" delete-rule="0" deferrability="2"/>
+      <foreign-key name="user_maid_ibfk_2" columns="maid_id" ref-table="maids" ref-schema="" ref-catalog="maidintown" ref-columns="id" update-rule="0" delete-rule="0" deferrability="2"/>
+    </table>
+    <table name="users" schema="" catalog="maidintown" type="TABLE">
+      <column name="id" sqlType="INT" precision="10" scale="0" nullable="false" jdbcType="4" autoIncrement="true"/>
+      <column name="name" sqlType="VARCHAR" precision="50" scale="0" nullable="false" jdbcType="12"/>
+      <column name="email" sqlType="VARCHAR" precision="50" scale="0" nullable="false" jdbcType="12"/>
+      <column name="password" sqlType="VARCHAR" precision="50" scale="0" nullable="false" jdbcType="12"/>
+      <column name="address" sqlType="VARCHAR" precision="50" scale="0" nullable="false" jdbcType="12"/>
+      <column name="phone" sqlType="VARCHAR" precision="11" scale="0" nullable="false" jdbcType="12"/>
+      <primary-key name="PRIMARY" columns="id"/>
+      <exported-key name="user_maid_ibfk_1" table="user_maid" schema="" catalog="maidintown" columns="user_id"/>
+      <index name="email" unique="true" columns="email"/>
+    </table>
+  </data-source>
+</component>
